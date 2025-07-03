@@ -5,7 +5,7 @@ Screening tasks
 # Task 1: SPICE Model Converter
 ## Objective
 Write a Python script to convert SPICE model files from the IHP PDK into a format compatible with eSim.
-## Instructions
+### Instructions
 Study the structure of SPICE model files provided in the IHP PDK.
 Understand eSim's model definition format (refer to eSim documentation).
 Develop a Python script that:
@@ -13,15 +13,15 @@ Reads a SPICE model file.
 Parses key parameters (e.g., transistor models, capacitances).
 Generates an equivalent model definition file for eSim.
 Test the script with at least two different SPICE models and verify the output.
-Skills Tested
+### Skills Tested
 File parsing and data extraction in Python.
 Understanding of SPICE and eSim model formats.
 Attention to detail in parameter mapping.
-Deliverables
+### Deliverables
 Python script (.py file) with comments explaining the conversion logic.
 Sample SPICE model files and their corresponding eSim model files.
 Brief report (.pdf or .docx) on the conversion process and any challenges faced.
-Resources
+### Resources
 eSim Documentation - Model definitions.
 Python File Handling.
 SPICE model files (provided by the team or from the IHP PDK).
@@ -32,8 +32,8 @@ SPICE model files (provided by the team or from the IHP PDK).
 
 
 
-Task 2: Symbol Library Generator
-Objective
+# Task 2: Symbol Library Generator
+## Objective
 Develop a Python script to generate symbol libraries for eSim based on IHP PDK component definitions.
 Instructions
 Obtain component definitions from the IHP PDK (e.g., from a database or file).
@@ -73,7 +73,7 @@ Generates simulation scripts or configuration files.
 Optionally, runs the simulation and extracts results.
 Test the tool with a simple circuit using IHP PDK models.
 
-     Skills Tested
+Skills Tested
 Automation and scripting in Python.
 Familiarity with simulation workflows in eSim.
 Integration of external tools via Python.
