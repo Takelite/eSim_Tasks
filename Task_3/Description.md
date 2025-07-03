@@ -1,95 +1,110 @@
 # Task 3: Simulation Automation Tool
 
-## Objective  
-The goal of this task was to automate the process of configuring and running simulations in **eSim** using **IHP PDK** models. A Python-based tool was developed that can:
+## Objective
 
-* Take user inputs for simulation type and parameters  
-* Automatically generate a valid SPICE circuit file (`.cir`)  
-* Optionally run the simulation using `ngspice`  
-* Work with or without IHP `.lib` model files
+The goal of Task 3 is to develop a **Python-based automation tool** that helps users easily set up and run circuit simulations using **eSim** and **Ngspice**, especially when working with **IHP PDK models**. This tool reduces the manual effort of editing `.cir` files and simplifies the overall simulation workflow.
 
 ---
 
-## Differences Between IHP PDK and eSim
+## Understanding the Context
 
-* **Model Format Complexity**  
-  IHP PDK model files are rich with advanced parameters designed for professional simulation environments. In contrast, eSim (based on Ngspice) has limited support and may throw errors if unsupported parameters are used.
+- **IHP PDK models** are professionally detailed and often require specific inclusion in the netlist.
+- **eSim** uses **Ngspice** as its simulation engine and expects a `.cir` file with a `.control` block to perform simulations.
+- Manually configuring these files for different types of simulations (DC, AC, Transient) can be tedious and error-prone, especially for beginners.
 
-* **Manual vs. Automated Setup**  
-  Setting up simulations manually in eSim involves editing `.cir` files, adding `.lib` references, and writing control statements. This tool automates those steps.
-
-* **Execution Environment**  
-  While IHP flows are often GUI-driven, eSim workflows can benefit from CLI automation. This tool fills that gap using Python.
+This script automates that process while ensuring compatibility with eSim and Ngspice.
 
 ---
 
-## How the Python Script Works
+## Key Functionalities of the Script
 
-1. **Input Collection**  
-   The script prompts the user to provide:
-   * Circuit file name (`.cir`)
-   * Simulation type (`.tran` or `.dc`)
-   * Parameters like time step, stop time, or DC sweep range
-   * Optional path to an IHP `.lib` model file
+### 1. **User Input Handling**
+- Prompts the user to provide:
+  - Circuit file exported from eSim (`.cir`)
+  - Optional `.lib` model file from IHP PDK
+  - Simulation type: **DC**, **AC**, or **Transient (tran)**
+  - Simulation parameters (e.g., sweep range, time step)
+  - Output signals to plot (e.g., `v(out)`)
 
-2. **Model Handling**  
-   If a `.lib` file is provided, it’s included in the output using `.include`. If not, it checks for `.model` or `.subckt` blocks in the original file.
+### 2. **Circuit File Modification**
+- Reads the original `.cir` file.
+- Optionally adds `.include "<path_to_lib>"` for IHP PDK model.
+- Skips any existing `.control` blocks to avoid conflicts.
+- Injects a fresh `.control` block with:
+  - The correct simulation command (based on user input)
+  - Plot command
+  - Output to `.raw` file for waveform viewing
 
-3. **File Generation**  
-   The tool creates a new `.cir` file (e.g., `updated_input.cir`) with:
-   * Models included at the top  
-   * Original circuit definition  
-   * A `.control` block for simulation  
-   * Commands to plot output and end the simulation
+### 3. **Simulation Execution**
+- Uses Python’s `subprocess` module to run:
 
-4. **Simulation (Optional)**  
-   If the user chooses, the script runs the simulation using `ngspice` and displays output in the terminal.
+  ```bash
+  ngspice updated_<filename>.cir
+  ```
+### 🖴 Output
 
----
-
-## How to Run This Script in VS Code
-
-> These steps assume you already have **Python** and **Ngspice** installed and added to your system PATH.
-
-1. **Open VS Code**  
-   Launch Visual Studio Code and open the folder where your script is located.
-
-2. **Place Your Files**  
-   * Add your input `.cir` file (e.g., `diode_test.cir`)  
-   * Add the model file if needed (e.g., `ihp_diode.lib`)  
-   * Make sure the Python script is in the same folder
-
-3. **Open a Terminal in VS Code**  
-   Go to the **Terminal** menu → **New Terminal**  
-   A terminal window will open at the bottom
-
-4. **Run the Script**  
-   In the terminal, run the script using:
-
-   ```bash
-   python simulation_tool.py
-   ```
-## Provide Inputs
-
-When you run the script, you’ll be prompted to:
-
-- **Enter the circuit file name** (e.g., `diode_test.cir`)
-- **Choose simulation type** (`tran` for transient or `dc` for DC analysis)
-- **Enter simulation values**:
-  - For `tran`: time step and stop time
-  - For `dc`: sweep variable, start, stop, and increment
-- **Provide the `.lib` model file name**, or just press Enter to skip
-- **Confirm if you want to run the simulation**
+- Creates a modified netlist named `updated_<original>.cir`
+- Generates a `simulation_output.raw` file containing waveform data
+- Saves the simulation output (stdout and stderr) to `simulation_log.txt` for debugging
 
 ---
 
-## Check the Output
+### How to Run the Script in VS Code
 
-- A new `.cir` file will be generated, e.g., `updated_diode_test.cir`
-- If you opted to run the simulation, `ngspice` will launch and display the results directly in the terminal
+#### 1. Prepare Files
+- Ensure your `.cir` file is exported from eSim and available in your project folder.
+- If using a `.lib` model (e.g., from IHP PDK), place it in the same folder or note the full path.
+
+#### 2. Open VS Code
+- Open the folder containing the script and your `.cir` file.
+
+#### 3. Run the Script
+- Open a terminal in VS Code.
+- Run the following command:
+
+```bash
+python3 simulation_automation.py
+```
+
+### 4. Follow the Prompts
+
+- Enter the filename of the circuit (e.g., `inverter.cir`)
+- Provide the model file path if needed (or press Enter to skip)
+- Choose simulation type: `dc`, `tran`, or `ac`
+- Enter simulation parameters and the output nodes to plot
+- Wait for the script to complete
 
 ---
 
-## Summary
+### 5. Check Outputs
 
-- This script makes it easier to run circuit simulations in eSim using IHP models by automatically setting up the simulation files and running them with Ngspice. It saves time, reduces manual errors, and is beginner-friendly.
+- `updated_<your_circuit>.cir` — modified file ready to simulate
+- `simulation_output.raw` — waveform data
+- `simulation_log.txt` — Ngspice output and logs
+
+---
+
+### IHP PDK vs eSim Netlist Configuration
+
+**IHP PDK Models:**
+- Require `.lib` or `.include` statements to be added manually
+- Include highly accurate foundry-level device definitions
+- Often contain parameters not supported by default eSim setups
+
+**eSim Netlists:**
+- Export basic `.cir` netlists from schematic designs
+- Usually do not contain `.control` blocks
+- Need simulation directives (`.control`, `.plot`, `.endc`) for execution
+
+This script automates the process of adapting IHP-level detail into the simpler, simulation-ready `.cir` format that eSim/Ngspice understands.
+
+---
+
+### Summary
+
+This automation tool streamlines circuit simulation in eSim by:
+
+- Taking user-defined inputs for simulation type and parameters
+- Injecting necessary `.control` blocks into existing `.cir` files
+- Automatically including IHP model files where applicable
+- Running the simulation using `ngspice` and logging results
