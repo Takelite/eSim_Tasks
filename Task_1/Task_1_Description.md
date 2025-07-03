@@ -37,15 +37,30 @@ The objective of this task was to convert SPICE model files provided by the IHP 
 
 - A header comment is included at the top of the output to indicate the file’s purpose and compatibility.
 
-## Additional Features
+## How to Run the Script in VSCode
 
-- The script outputs eSim-compatible `.model` blocks that can be directly included in schematic simulations.
+Follow these steps to run the script and generate an eSim-compatible `.model` file using Visual Studio Code:
 
-- It is generic enough to handle multiple diode models in a single file and can be extended for other device types (e.g., MOSFETs or BJTs) with minor changes in the filtering logic.
+### 1. Prepare the Files
 
-- By stripping unsupported and unnecessary parameters, the script ensures that the output remains compact, readable, and free of compatibility issues with eSim.
+- Ensure you have Python installed (preferably Python 3.x).
+- Create a folder (e.g., `esim_converter`) and open it in VSCode.
+- Inside this folder, add the following files:
+  - `convert_model.py` — the Python script with the conversion logic.
+  - `ihp_diode_model.spice.txt` — your input SPICE model file from the IHP PDK.
 
-## Summary
+### 2. Open the Terminal
 
-This script acts as a translator between detailed SPICE model files from the IHP PDK and the streamlined format required by eSim. By extracting only supported parameters and reformatting them properly, it simplifies the model integration process for users and ensures successful simulation in the eSim environment. It is particularly useful for academic and open-source scenarios where ease of use and compatibility are key concerns.
+- In VSCode, go to the top menu and click on:
+  - `Terminal > New Terminal`
+- This opens a terminal at the bottom of the VSCode window, already set to your current working folder.
+- Set the right directory with the `cd` command in the terminal, by adding the `.py` files in the same location as the path you provide.
 
+### 3. Run the Script
+
+- Type the following command in the terminal:
+  ```bash
+  python convert_model.py
+or just click on the run button.
+
+This should be sufficient to generate an eSim compatible .model file with the appropriate parameters taken care of.
