@@ -4,7 +4,7 @@
 
 The objective of this task was to convert SPICE model files provided by the IHP PDK into a format that is compatible with eSim. The Python script developed for this task specifically handles `.MODEL` definitions for diodes and reformats them for use within eSim’s simulation environment.
 
-## 🧠 Key Differences Between IHP PDK and eSim
+## Key Differences Between IHP PDK and eSim
 
 - **Parameter Scope:**  
   IHP PDK model files often contain detailed parameters meant for high-accuracy simulations in industrial tools. These include advanced temperature and semiconductor behavior parameters such as `tnom`, `xti`, `eg`, and others.
