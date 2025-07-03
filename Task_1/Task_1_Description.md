@@ -1,10 +1,10 @@
-# 📘 Explanation of Code and Differences Between IHP PDK and eSim Formats
+# Explanation of Code and Differences Between IHP PDK and eSim Formats
 
-## 🎯 Objective
+## Objective
 
 The objective of this task was to convert SPICE model files provided by the IHP PDK into a format that is compatible with eSim. The Python script developed for this task specifically handles `.MODEL` definitions for diodes and reformats them for use within eSim’s simulation environment.
 
-## 🧠 Key Differences Between IHP PDK and eSim
+## Key Differences Between IHP PDK and eSim
 
 - **Parameter Scope:**  
   IHP PDK model files often contain detailed parameters meant for high-accuracy simulations in industrial tools. These include advanced temperature and semiconductor behavior parameters such as `tnom`, `xti`, `eg`, and others.
@@ -21,7 +21,7 @@ The objective of this task was to convert SPICE model files provided by the IHP 
 - **Simplification Requirement:**  
   Many of the parameters included in IHP files are not necessary for typical eSim use cases. These were intentionally filtered out to produce a lightweight, compatible output.
 
-## 🧪 Script Design and Logic
+## Script Design and Logic
 
 - The script begins by opening and reading the input `.spice` file line by line.
 
@@ -37,7 +37,7 @@ The objective of this task was to convert SPICE model files provided by the IHP 
 
 - A header comment is included at the top of the output to indicate the file’s purpose and compatibility.
 
-## 🛠 Additional Features
+## Additional Features
 
 - The script outputs eSim-compatible `.model` blocks that can be directly included in schematic simulations.
 
@@ -45,7 +45,7 @@ The objective of this task was to convert SPICE model files provided by the IHP 
 
 - By stripping unsupported and unnecessary parameters, the script ensures that the output remains compact, readable, and free of compatibility issues with eSim.
 
-## ✅ Summary
+## Summary
 
 This script acts as a translator between detailed SPICE model files from the IHP PDK and the streamlined format required by eSim. By extracting only supported parameters and reformatting them properly, it simplifies the model integration process for users and ensures successful simulation in the eSim environment. It is particularly useful for academic and open-source scenarios where ease of use and compatibility are key concerns.
 
