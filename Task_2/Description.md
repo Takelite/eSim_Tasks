@@ -79,6 +79,13 @@ generate_lib(symbol_name, pins, "converted.lib")
 
 ---
 
+## How to Add the symbol in eSim
+
+* Open the schematic window in eSim and click on the Library Editor Button.
+* From this window click on import component button and select the generated `.lib` file from vscode.
+* This should successfully load the component symbol in the eSim Library Editor Window
+
+
 ### Additional Notes
 
 * The generated `.lib` file is **minimal but compatible** with eSim.
