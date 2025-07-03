@@ -90,8 +90,6 @@ def generate_lib(symbol_name, pins, output_file):
         f.write("ENDDRAW\nENDDEF\n")
 
 
-# -------------------- Example Usage --------------------
-
 # Provide the path to the input .sym file (from xschem)
 sym_file = "sg13g2_and2_1.sym"
 
