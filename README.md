@@ -2,10 +2,10 @@
 Screening tasks
 
 
-#Task 1: SPICE Model Converter
-##Objective
+# Task 1: SPICE Model Converter
+## Objective
 Write a Python script to convert SPICE model files from the IHP PDK into a format compatible with eSim.
-##Instructions
+## Instructions
 Study the structure of SPICE model files provided in the IHP PDK.
 Understand eSim's model definition format (refer to eSim documentation).
 Develop a Python script that:
