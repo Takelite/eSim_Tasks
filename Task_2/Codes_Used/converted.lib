@@ -1,0 +1,24 @@
+EESchema-LIBRARY Version 2.3
+#encoding utf-8
+#
+# and2_1
+#
+DEF and2_1 U 0 40 Y Y 1 F N
+F0 "U" 0 0 60 H V C CNN
+F1 "and2_1" 50 100 60 H V C CNN
+F2 "" 0 0 60 H V C CNN
+F3 "" 0 0 60 H V C CNN
+DRAW
+S -30 -30 5 30 0 1 10 N
+P 2 0 1 0 -60 -20 -30 -20 N
+P 2 0 1 0 -60 20 -30 20 N
+P 2 0 1 0 -30 -30 5 -30 N
+P 2 0 1 0 -30 30 5 30 N
+A 0 0 30 270 180 0 1 0 N
+X A 1 -100 -20 200 R 50 50 1 1 I
+X B 2 -100 20 200 R 50 50 1 1 I
+X X 3 100 0 200 L 50 50 1 1 O
+ENDDRAW
+ENDDEF
+#
+#End Library
