@@ -105,13 +105,7 @@ generate_lib(symbol_name, pins, "converted.lib")
 
 ### Summary
 
-This script provides a **lightweight and effective solution** for migrating **xschem component symbols from IHP PDKs** into the **KiCad/eSim-compatible `.lib` format**.
+This script provides a lightweight and effective solution for migrating xschem component symbols from IHP PDKs into the KiCad/eSim-compatible `.lib` format.
 
-It demonstrates how to:
 
-* Parse a `.sym` file,
-* Extract pin and symbol metadata,
-* Write a clean and structured `.lib` symbol file.
-
-This tool is highly useful for integrating IHP components into academic or open-source eSim projects, making them more accessible for schematic simulation and layout workflows.
 
