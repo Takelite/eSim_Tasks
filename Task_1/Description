@@ -1,6 +1,6 @@
-# 📘 Explanation of Code and Differences Between IHP PDK and eSim Formats
+# Explanation of Code and Differences Between IHP PDK and eSim Formats
 
-## 🎯 Objective
+## Objective
 
 The objective of this task was to convert SPICE model files provided by the IHP PDK into a format that is compatible with eSim. The Python script developed for this task specifically handles `.MODEL` definitions for diodes and reformats them for use within eSim’s simulation environment.
 
