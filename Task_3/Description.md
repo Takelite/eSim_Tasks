@@ -1,6 +1,6 @@
-# 🧪 Task 3: Simulation Automation Tool
+# Task 3: Simulation Automation Tool
 
-## 🎯 Objective  
+## Objective  
 The goal of this task was to automate the process of configuring and running simulations in **eSim** using **IHP PDK** models. A Python-based tool was developed that can:
 
 * Take user inputs for simulation type and parameters  
@@ -10,7 +10,7 @@ The goal of this task was to automate the process of configuring and running sim
 
 ---
 
-## 🔄 Differences Between IHP PDK and eSim
+## Differences Between IHP PDK and eSim
 
 * **Model Format Complexity**  
   IHP PDK model files are rich with advanced parameters designed for professional simulation environments. In contrast, eSim (based on Ngspice) has limited support and may throw errors if unsupported parameters are used.
@@ -23,7 +23,7 @@ The goal of this task was to automate the process of configuring and running sim
 
 ---
 
-## ⚙️ How the Python Script Works
+## How the Python Script Works
 
 1. **Input Collection**  
    The script prompts the user to provide:
@@ -47,7 +47,7 @@ The goal of this task was to automate the process of configuring and running sim
 
 ---
 
-## 💻 How to Run This Script in VS Code
+## How to Run This Script in VS Code
 
 > These steps assume you already have **Python** and **Ngspice** installed and added to your system PATH.
 
@@ -69,7 +69,7 @@ The goal of this task was to automate the process of configuring and running sim
    ```bash
    python simulation_tool.py
    ```
-## 📝 Provide Inputs
+## Provide Inputs
 
 When you run the script, you’ll be prompted to:
 
@@ -83,13 +83,13 @@ When you run the script, you’ll be prompted to:
 
 ---
 
-## 📤 Check the Output
+## Check the Output
 
 - A new `.cir` file will be generated, e.g., `updated_diode_test.cir`
 - If you opted to run the simulation, `ngspice` will launch and display the results directly in the terminal
 
 ---
 
-## 📌 Summary
+## Summary
 
 - This script makes it easier to run circuit simulations in eSim using IHP models by automatically setting up the simulation files and running them with Ngspice. It saves time, reduces manual errors, and is beginner-friendly.
