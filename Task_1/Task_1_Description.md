@@ -63,4 +63,4 @@ Follow these steps to run the script and generate an eSim-compatible `.model` fi
   python convert_model.py
 or just click on the run button.
 
-This should be sufficient to generate an eSim compatible .model file with the appropriate parameters taken care of.
+This should be sufficient to generate an eSim compatible `.model` file with the appropriate parameters taken care of.
